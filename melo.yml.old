@@ -1,0 +1,15 @@
+settings:
+  ignore_errors: true
+
+defaults:
+  type: sym # sym/hard
+
+items:
+  fish:
+    from: "fish"
+    to: "~/.config/fish"
+    type: hard
+
+  kitty:
+    from: "kitty"
+    to: "~/.config/kitty"

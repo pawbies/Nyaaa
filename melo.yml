@@ -1,0 +1,14 @@
+settings:
+  ignore_errors: true
+
+defaults:
+  type: sym
+
+items:
+  one:
+    from: one
+    to: ".config/one"
+    type: hard
+  two:
+    from: two
+    to: ~/.two
