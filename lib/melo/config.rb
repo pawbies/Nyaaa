@@ -7,22 +7,40 @@ module Melo
   class Config
     attr_accessor :settings, :defaults, :items
 
+    SAMPLE_CONFIG = <<~YML
+      defaults:
+        type: hard
+
+      items:
+        melo:
+          from: melo.yml
+          to: copy.yml
+          type: sym
+    YML
+
     def initialize(file_path)
-      @settings = {}
       @defaults = {}
       @items = []
 
-      @file = File.open(file_path, "r")
-      config = YAML.load(@file.read)
+      file = File.open(file_path, "r")
+      config = YAML.load(file.read)
 
-      parse_settings config["settings"]
       parse_defaults config["defaults"]
       parse_items    config["items"]
     end
 
-    def parse_settings(settings)
-      @settings[:ignore_errors] = [true, false].include?(settings["ignore_errors"]) ? settings["ignore_errors"] : nil
+    def generate_bash_script
+      script = "#!/bin/sh\n"
+
+      items.each do |item|
+        script += item.bash_line
+        script += "\n"
+      end
+
+      script
     end
+
+    private
 
     def parse_defaults(defaults)
       @defaults[:type] = %w[sym hard].include?(defaults["type"]) ? defaults["type"] : nil
