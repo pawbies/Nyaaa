@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "lib/melo/version"
+require_relative "lib/nyaaa/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "melo"
-  spec.version = Melo::VERSION
+  spec.name = "nyaaa"
+  spec.version = Nyaaa::VERSION
   spec.authors = ["pawbies"]
   spec.email = ["alex.fuchs@pawbies.net"]
 
@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
   # spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/pawbies/melo"
+  spec.metadata["source_code_uri"] = "https://github.com/pawbies/nyaaa"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.

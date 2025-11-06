@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
 # require "bundler/setup"
-require "melo"
+require "nyaaa"
 
-Melo::CLI.start(ARGV)
+Nyaaa::CLI.start(ARGV)

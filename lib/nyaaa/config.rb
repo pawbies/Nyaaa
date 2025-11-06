@@ -3,7 +3,7 @@
 require "yaml"
 require_relative "item"
 
-module Melo
+module Nyaaa
   class Config
     attr_accessor :settings, :defaults, :items
 
@@ -13,8 +13,8 @@ module Melo
         exit_on_error: false
 
       items:
-        melo:
-          from: melo.yml
+        nyaaa:
+          from: nyaaa.yml
           to: copy.yml
           type: sym
     YML

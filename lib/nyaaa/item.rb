@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Melo
+module Nyaaa
   class Item # rubocop:disable Style/Documentation
     attr_accessor :name, :type, :from, :to
 
