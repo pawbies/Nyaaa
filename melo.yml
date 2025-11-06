@@ -1,0 +1,14 @@
+defaults:
+  type: hard #you cannot create hard links to directories
+  exit_on_error: false
+
+items:
+  melo:
+    from: melo.yml
+    to: copy.yml
+    type: sym
+
+  melo2:
+    from: copy.yml
+    to: melo3.yml
+    type: sym

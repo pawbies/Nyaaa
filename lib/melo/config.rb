@@ -9,7 +9,8 @@ module Melo
 
     SAMPLE_CONFIG = <<~YML
       defaults:
-        type: hard
+        type: hard #you cannot create hard links to directories
+        exit_on_error: false
 
       items:
         melo:
@@ -44,6 +45,7 @@ module Melo
 
     def parse_defaults(defaults)
       @defaults[:type] = %w[sym hard].include?(defaults["type"]) ? defaults["type"] : nil
+      @defaults[:exit_on_error] = [true, false].include?(defaults["exit_on_error"]) ? defaults["exit_on_error"] : nil
     end
 
     def parse_items(items)

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Melo
-  class Item
+  class Item # rubocop:disable Style/Documentation
     attr_accessor :name, :type, :from, :to
 
     def initialize(options = {}, defaults = {})
@@ -9,16 +9,19 @@ module Melo
       @type = options[:type] || defaults[:type] || "sym"
       @from = options[:from]
       @to   = options[:to]
+
+      @exit_on_error = options[:exit_on_error] || defaults[:exit_on_error] || false
     end
 
     def apply
       File.link @from, @to if @type == "hard"
       File.symlink @from, @to if @type == "sym"
     rescue Errno::EPERM => e
-      # you cannot create hard links to directories
-      puts "#{@name} failed to link: #{e.message}"
+      warn "#{@name} failed to link: #{e.message}"
+      exit e.errno if @exit_on_error
     rescue Errno::EEXIST => e
-      puts "#{@name} failed to link: #{e.message}"
+      warn "#{@name} failed to link: #{e.message}"
+      exit e.errno if @exit_on_error
     end
 
     def bash_line
