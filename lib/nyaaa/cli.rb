@@ -8,7 +8,7 @@ module Nyaaa
   class CLI < Thor
     desc "init", "Generate a config file in the current directory"
     def init
-      File.write(File.join(Dir.pwd, "nyaaa.yml"), Config::SAMPLE_CONFIG)
+      File.write(File.join(Dir.pwd, "nyaaa.yml"), Config.generate_sample_config)
     end
 
     desc "link", "Link to configurations as defined in the nyaaa.yml file"

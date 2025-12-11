@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    melo (0.1.0)
+    nyaaa (1.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -44,7 +44,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  melo!
+  nyaaa!
   rake (~> 13.0)
   rubocop (~> 1.21)
   thor (~> 1.4)

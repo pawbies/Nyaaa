@@ -2,21 +2,22 @@
 
 require "yaml"
 require_relative "item"
+require_relative "default_configs"
 
 module Nyaaa
   class Config
     attr_accessor :settings, :defaults, :items
 
     SAMPLE_CONFIG = <<~YML
-      defaults:
-        type: hard #you cannot create hard links to directories
-        exit_on_error: false
-
-      items:
-        nyaaa:
-          from: nyaaa.yml
-          to: copy.yml
-          type: sym
+      # defaults:
+      #   type: hard #you cannot create hard links to directories
+      #   exit_on_error: false
+      #
+      # items:
+      #   nyaaa:
+      #     from: nyaaa.yml
+      #     to: copy.yml
+      #     type: sym
     YML
 
     def initialize(file_path)
@@ -39,6 +40,27 @@ module Nyaaa
       end
 
       script
+    end
+
+    def self.generate_sample_config
+      sample_config = SAMPLE_CONFIG
+
+      Dir.foreach(".") do |name|
+        next if [".", ".."].include?(name)
+
+        DEFAULT_CONFIGS.each do |key, config|
+          next unless config[:folders].include?(name)
+
+          sample_config += <<~ITEM
+            #{key}:
+              from: #{name}
+              to: #{config[:to]}
+              type: #{config[:type]}
+          ITEM
+        end
+      end
+
+      sample_config
     end
 
     private
