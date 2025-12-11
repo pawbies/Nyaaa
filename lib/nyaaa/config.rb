@@ -9,15 +9,15 @@ module Nyaaa
     attr_accessor :settings, :defaults, :items
 
     SAMPLE_CONFIG = <<~YML
-      # defaults:
-      #   type: hard #you cannot create hard links to directories
-      #   exit_on_error: false
-      #
-      # items:
-      #   nyaaa:
-      #     from: nyaaa.yml
-      #     to: copy.yml
-      #     type: sym
+      defaults:
+        type: hard #you cannot create hard links to directories
+        exit_on_error: false
+
+      items:
+        nyaaa:
+          from: nyaaa.yml
+          to: copy.yml
+          type: sym
     YML
 
     def initialize(file_path)
