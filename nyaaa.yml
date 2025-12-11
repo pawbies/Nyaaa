@@ -1,0 +1,13 @@
+defaults:
+  type: hard #you cannot create hard links to directories
+  exit_on_error: false
+
+items:
+  nyaaa:
+    from: nyaaa.yml
+    to: copy.yml
+    type: sym
+  nvim:
+    from: nvim
+    to: ~/.config/nvim
+    type: sym

@@ -65,10 +65,10 @@ module Nyaaa
           next unless config[:folders].include?(name)
 
           sample_config += <<-ITEM
-                #{key}:
-                  from: #{name}
-                  to: #{config[:to]}
-                  type: #{config[:type]}
+  #{key}:
+    from: #{name}
+    to: #{config[:to]}
+    type: #{config[:type]}
           ITEM
         end
       end
