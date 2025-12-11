@@ -13,14 +13,20 @@ module Nyaaa
 
     desc "link", "Link to configurations as defined in the nyaaa.yml file"
     def link
-      config = Config.new "nyaaa.yml"
+      config = get_config
       config.items.each(&:apply)
     end
 
     desc "gen", "Generate bash script to apply the changes"
     def gen
-      config = Config.new "nyaaa.yml"
+      config = get_config
       File.write(File.join(Dir.pwd, "nyaaa.sh"), config.generate_bash_script)
+    end
+
+    private
+
+    def get_config
+      Config.new "nyaaa.yml"
     end
   end
 end
