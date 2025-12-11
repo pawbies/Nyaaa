@@ -27,8 +27,21 @@ module Nyaaa
       file = File.open(file_path, "r")
       config = YAML.load(file.read)
 
-      parse_defaults config["defaults"]
-      parse_items    config["items"]
+      if config.nil?
+        puts "Config file doesnt exist or is empty"
+        exit 1
+      end
+
+      if config["defaults"].nil?
+        @config = nil
+      else
+        parse_defaults config["defaults"]
+      end
+      if config["items"].nil?
+        @items = []
+      else
+        parse_items config["items"]
+      end
     end
 
     def generate_bash_script
