@@ -64,11 +64,11 @@ module Nyaaa
         DEFAULT_CONFIGS.each do |key, config|
           next unless config[:folders].include?(name)
 
-          sample_config += <<~ITEM
-            #{key}:
-              from: #{name}
-              to: #{config[:to]}
-              type: #{config[:type]}
+          sample_config += <<-ITEM
+                #{key}:
+                  from: #{name}
+                  to: #{config[:to]}
+                  type: #{config[:type]}
           ITEM
         end
       end
